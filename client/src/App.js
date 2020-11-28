@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -9,7 +8,7 @@ class App extends Component {
   }
 
   callAPI() {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:8000/testAPI")
       .then((res) => res.text())
       .then((res) => this.setState({ apiResponse: res }))
       .catch((err) => err);
@@ -22,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="App-title">Welcome to React</h1>
+        <h1 className="App-title">Snake Game</h1>
         <p className="App-intro">{this.state.apiResponse}</p>
       </div>
     );
