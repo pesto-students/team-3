@@ -1,31 +1,22 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
+import Loading from "./Loading.js";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: "" };
-  }
+function App() {
+  const [loading, setLoading] = useState(false);
 
-  callAPI() {
-    fetch("http://localhost:8000/testAPI")
-      .then((res) => res.text())
-      .then((res) => this.setState({ apiResponse: res }))
-      .catch((err) => err);
-  }
-
-  componentDidMount() {
-    this.callAPI();
-  }
-
-  render() {
+  if (loading) {
     return (
-      <div className="App">
-        <h1 className="App-title">Snake Game</h1>
-        <p className="App-intro">{this.state.apiResponse}</p>
-      </div>
+      <main className="App">
+        <Loading />
+      </main>
     );
   }
+  return (
+    <div className="App">
+      <h1 className="App-title">Snake Rivals</h1>
+    </div>
+  );
 }
 
 export default App;
