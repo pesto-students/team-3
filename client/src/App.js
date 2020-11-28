@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Loading from "./Loading.js";
+import SnakeBoard from "./SnakeBoard.js";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="App-title">Snake Rivals</h1>
+      <SnakeBoard />
     </div>
   );
 }
