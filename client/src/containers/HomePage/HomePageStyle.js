@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import { Grid } from 'react-flexbox-grid';
+import { Grid, Row } from 'react-flexbox-grid';
 import Logo from '../../components/Logo';
-
+export const HomePageRow = styled(Row)`
+  flex: 1 1 auto;
+`;
 export const GridStyle = styled(Grid)`
   flex: 1 1 auto;
   display: flex;
@@ -16,5 +18,5 @@ export const GridStyle = styled(Grid)`
 `;
 
 export const LogoStyle = styled(Logo)`
-  margin-top: 20%;
+  margin-top: 10%;
 `;

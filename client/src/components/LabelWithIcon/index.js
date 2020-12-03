@@ -5,7 +5,7 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   font-family: ${({ fontFamily }) =>
-    ` var(--ff-${fontFamily})` || 'var(--ff-primary)'};
+    fontFamily ? ` var(--ff-${fontFamily})` : 'var(--ff-primary)'};
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-size: ${({ fontSize }) => fontSize || '2.75rem'};
   font-weight: 500;

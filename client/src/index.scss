@@ -7,6 +7,10 @@ Fonts
   font-family: 'JumpMan';
   src: url('assets/fonts/Jumpman.ttf');
 }
+@font-face {
+  font-family: 'Major Mono Display', monospace;
+  src: url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+}
 /*
 =============== 
 Variables
@@ -15,7 +19,7 @@ Variables
 
 :root {
   --ff-logo: 'JumpMan';
-  --ff-primary: 'JumpMan';
+  --ff-primary: 'Major Mono Display', monospace;
   --ff-secondary: 'Segoe UI';
   --ff-tertiary: 'Roboto';
   --clr-white: #fff;

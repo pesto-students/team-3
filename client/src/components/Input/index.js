@@ -2,12 +2,12 @@ import styled from 'styled-components';
 // import mediaSize from '../../constants/MediaSize';
 
 const Input = styled.input`
-  margin-top: 15%;
-  min-height: 3.625rem;
+  margin: 10px;
+  min-height: 2.5rem;
   width: 50%;
   font-family: var(--ff-primary);
   font-size: 2.1875rem;
-  padding: 24px 32px;
+  padding: 15px;
   opacity: 0.59;
   border-radius: 15px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
