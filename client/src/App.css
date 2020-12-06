@@ -46,3 +46,35 @@ li{
   font-size: 16px;
   color: #fff;
 }
+
+.game-area {
+  position: relative;
+  margin: 0px auto;
+  width: 100%;
+  height: 89vh;
+  border: 20px solid transparent;
+  border-image: url(./assets/stone.png) 20 round;
+  border-image-repeat: repeat;
+  background: url(./assets/gamearea.png) left top no-repeat;
+  background-size: cover;
+  padding: 30px;
+}
+
+.snake-dot {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: #000;
+  border: 1px solid #fff;
+  z-index: 2;
+}
+
+.snake-food {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background: red;
+  /* background: url(./assets/food1.png) center center no-repeat; */
+  border: 1px solid #fff;
+  z-index: 1;
+}
