@@ -1,12 +1,15 @@
-import React from 'react';
-import LabelWithIcon from '../../components/LabelWithIcon';
-import { ButtonWithOutStyle } from '../../components/Button';
-import FloatingLabel from 'react-styled-floating-label';
-import styled from 'styled-components';
-import BigText from '../../components/BigText';
+import React from "react";
+import LabelWithIcon from "../../components/LabelWithIcon";
+import { ButtonWithOutStyle } from "../../components/Button";
+import FloatingLabel from "react-styled-floating-label";
+import styled from "styled-components";
+import BigText from "../../components/BigText";
 const ButtonForSignIn = styled(ButtonWithOutStyle)`
   background-color: var(--clr-primary);
-  padding: 0.8rem;
+  padding: 0 24px;
+  height: 34px;
+  border-radius: 2px;
+  font-weight: 400 !important;
 `;
 const BlueFloatingLabel = styled(FloatingLabel)``;
 
