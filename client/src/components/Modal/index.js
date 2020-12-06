@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ButtonWithOutStyle } from '../Button';
+import React from "react";
+import styled from "styled-components";
+import { ButtonWithOutStyle } from "../Button";
 const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -24,6 +24,7 @@ const ModalBoxSetup = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
   background: rgba(255, 255, 255);
   border: 0.5px solid #e8e8e8;
+  border-radius: 4px;
   @media (max-width: 500px) {
     width: 80%;
   }
@@ -49,7 +50,7 @@ const CrossIcon = styled.div`
   &:after {
     position: absolute;
     left: 10px;
-    content: ' ';
+    content: " ";
     height: 15px;
     width: 2px;
     background-color: #333;
