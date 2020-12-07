@@ -1,0 +1,100 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@font-face {
+  font-family: 'JumpMan';
+  src: url('assets/fonts/Jumpman.ttf');
+}
+@font-face {
+  font-family: 'Major Mono Display', monospace;
+  src: url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+}
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --ff-logo: 'JumpMan';
+  --ff-primary: 'Major Mono Display', monospace;
+  --ff-secondary: 'Segoe UI';
+  --ff-tertiary: 'Roboto';
+  --clr-white: #fff;
+  --clr-primary: green;
+  --cool-grey: #97a4a7;
+  --light-red: #ff5155;
+  --deep-teal: #00435d;
+  --radio-background: #fafafa;
+  --radio-border: #ddd;
+  --radio-fill: green;
+  --radio-size: 20px;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+html {
+  font-size: 16px;
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media (max-width: 400px) {
+  html {
+    font-size: 10px;
+  }
+}
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: var(--clr-primary);
+  font-family: var(--ff-primary), var(--ff-secondary), var(--ff-tertiary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+}
+#root {
+  min-height: 100vh;
+}
+#root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.075;
+  min-height: 100vh;
+}
+.App-container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding: 0 8px;
+  // background: #11998e;
+  // background: -webkit-linear-gradient(to right, #11998e, #38ef7d);
+  // background: linear-gradient(to right, #11998e, #38ef7d);
+}
