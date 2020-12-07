@@ -35,8 +35,6 @@ const HomePage = (props) => {
         </Col>
         <Col xs={12}>
           <div>
-            {/* <Radio label="Single Player" />
-            <Radio label="Multiple Player" /> */}
             <div
               className="input-radiobtns"
               onChange={(event) => setGameType(event.target.value)}
