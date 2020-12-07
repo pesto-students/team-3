@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/';
-import Snake from "./Snake";
-import Food from "./Food";
+import Snake from './Snake';
+import Food from './Food';
 import { Grid, Row } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
@@ -20,13 +20,12 @@ const getRandomCoordinates = () => {
 const initialState = {
   food: getRandomCoordinates(),
   speed: 200,
-  direction: "RIGHT",
+  direction: 'RIGHT',
   snakeDots: [
     [0, 0],
     [2, 0],
   ],
 };
-
 
 class GameBoard extends Component {
   state = initialState;
@@ -46,17 +45,19 @@ class GameBoard extends Component {
     e = e || window.event;
     switch (e.keyCode) {
       case 38:
-        this.setState({ direction: "UP" });
+        this.setState({ direction: 'UP' });
         break;
       case 40:
-        this.setState({ direction: "DOWN" });
+        this.setState({ direction: 'DOWN' });
         break;
       case 37:
-        this.setState({ direction: "LEFT" });
+        this.setState({ direction: 'LEFT' });
         break;
       case 39:
-        this.setState({ direction: "RIGHT" });
+        this.setState({ direction: 'RIGHT' });
         break;
+      default:
+        return;
     }
   };
 
@@ -65,18 +66,20 @@ class GameBoard extends Component {
     let head = dots[dots.length - 1];
 
     switch (this.state.direction) {
-      case "RIGHT":
+      case 'RIGHT':
         head = [head[0] + 2, head[1]];
         break;
-      case "LEFT":
+      case 'LEFT':
         head = [head[0] - 2, head[1]];
         break;
-      case "DOWN":
+      case 'DOWN':
         head = [head[0], head[1] + 2];
         break;
-      case "UP":
+      case 'UP':
         head = [head[0], head[1] - 2];
         break;
+      default:
+        return;
     }
     dots.push(head);
     dots.shift();
