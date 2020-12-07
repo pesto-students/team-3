@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -19,30 +19,27 @@
   text-align: center;
 }
 
-.App h1{
-  margin-bottom: 20px;
-  color: #16a596;
-  margin-top: 0px;
-}
-
-li{
+li {
   list-style: none;
   margin: 0px;
-  padding: 0px;}
+  padding: 0px;
+}
 
-.input-radiobtns{
+.input-radiobtns {
   width: 100%;
   display: block;
 }
 
-.input-radiobtns label{
+.input-radiobtns label {
   font-size: 24px;
   margin-right: 20px;
 }
-.input-radiobtns label:last-child{
+
+.input-radiobtns label:last-child {
   margin-right: 0px;
 }
-.username{
+
+.username {
   font-size: 16px;
   color: #fff;
 }

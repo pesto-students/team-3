@@ -1,75 +1,81 @@
 import React from 'react';
 import styled from 'styled-components';
-const LabelStyled = styled.label`
-  position: absolute;
-  text-align: center;
-  .label {
-    margin-top: 10px;
-    font-size: 2rem;
-  }
-  border: 1px solid white;
-  padding: 10px;
-`;
-const RadioDiv = styled.div`
-  width: var(--radio-size);
-  height: var(--radio-size);
+import mediaSize from '../../constants/MediaSize';
+
+const Switch = styled.div`
   position: relative;
-  left: 40%;
-  &::before {
-    content: '';
-    border-radius: 100%;
-    border: 1px solid var(--radio-border);
-    background: var(--radio-background);
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  border: 3px solid var(--clr-primary);
+  color: var(--clr-primary);
+  font-size: 1.2;
+  font-family: var(--ff-primary);
+  border-radius: 10px;
+  @media ${mediaSize.tablet} {
+    font-size: 1.5625rem;
+    width: 75%;
+  }
+`;
+const Quality = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  line-height: 40px;
+  &:first-child label {
+    border-radius: 5px 0 0 5px;
+  }
+  &:last-child label {
+    border-radius: 0 5px 5px 0;
+  }
+  label {
     position: absolute;
     top: 0;
-    box-sizing: border-box;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .radio-input {
-    opacity: 0;
-    z-index: 2;
+    left: 0;
     width: 100%;
     height: 100%;
-    margin: 0;
     cursor: pointer;
-
-    &:focus {
-      outline: none;
-    }
+    font-style: italic;
+    text-align: center;
+    transition: transform 0.4s, color 0.4s, background-color 0.4s;
   }
-
-  .radio-fill {
-    background: var(--radio-fill);
+  input[type='radio'] {
+    appearance: none;
     width: 0;
     height: 0;
-    border-radius: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease-in, height 0.2s ease-in;
-    pointer-events: none;
-    z-index: 1;
+    opacity: 0;
   }
 
-  .radio-input:checked ~ .radio-fill {
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    transition: width 0.2s ease-out, height 0.2s ease-out;
+  input[type='radio']:focus {
+    outline: 0;
+    outline-offset: 0;
+  }
+  input[type='radio']:checked ~ label {
+    background-color: var(--clr-primary);
+    color: white;
+  }
+  input[type='radio']:active ~ label {
+    transform: scale(1.05);
   }
 `;
-const Radio = ({ label, value }) => {
+
+const Radio = ({ options, selectedOption, onChange }) => {
   return (
-    <LabelStyled>
-      <RadioDiv>
-        <input className="radio-input" type="radio" value="single" />
-        <div className="radio-fill"></div>
-      </RadioDiv>
-      <div className="label">{label}</div>
-    </LabelStyled>
+    <Switch>
+      {options &&
+        options.map((option) => (
+          <Quality onChange={onChange}>
+            <input
+              checked={option.value === selectedOption}
+              id={option.value}
+              name={option.value}
+              type="radio"
+              value={option.value}
+            ></input>
+            <label for={option.value}>{option.label}</label>
+          </Quality>
+        ))}
+    </Switch>
   );
 };
 
