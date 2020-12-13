@@ -13,7 +13,7 @@ const Switch = styled.div`
   border-radius: 10px;
   @media ${mediaSize.tablet} {
     font-size: 1.5625rem;
-    width: 75%;
+    width: 61%;
   }
 `;
 const Quality = styled.div`

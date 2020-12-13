@@ -34,53 +34,61 @@ const HomePage = (props) => {
         />
       )}
       <HomePageRow center="xs">
-        <Col xs={12}>
+        <header className="gameHeader">
           <LogoStyle />
-        </Col>
+          <div className="loginregisterHeader">
+            <ButtonWithOutStyle className="headerCommonButton" onClick={() => setShowLoginModal(true)}>
+              <LabelWithIcon fontSize="1rem" label="Login" />
+            </ButtonWithOutStyle>
+            <ButtonWithOutStyle className="headerCommonButton" onClick={() => setShowRegisterModal(true)}>
+              <LabelWithIcon fontSize="1rem" label="Register" />
+            </ButtonWithOutStyle>
+          </div>
+        </header>
         <Col xs={12}>
-          <Radio
-            options={Options}
-            selectedOption={gameType}
-            onChange={(event) => setGameType(event.target.value)}
-          />
-        </Col>
-        {gameType === 'multiple' && (
-          <Col xs={12}>
-            <Input align="center" type="text" placeholder="Enter Room id" />
+            <Radio
+              options={Options}
+              selectedOption={gameType}
+              onChange={(event) => setGameType(event.target.value)}
+            />
           </Col>
-        )}
-        <Col xs={12}>
-          {gameType === 'multiple' ? (
-            <ButtonGroupBy>
+          {gameType === 'multiple' && (
+            <Col xs={12}>
+              <Input align="center" type="text" placeholder="Enter Room id" />
+            </Col>
+          )}
+          <Col xs={12}>
+            {gameType === 'multiple' ? (
+              <ButtonGroupBy>
+                <ButtonWithOutStyle
+                  onClick={() => props.history.push('/gameboard')}
+                >
+                  <LabelWithIcon label="Create a game" />
+                </ButtonWithOutStyle>
+                <ButtonWithOutStyle
+                  onClick={() => props.history.push('/gameboard')}
+                >
+                  <LabelWithIcon label="Join a game" />
+                </ButtonWithOutStyle>
+              </ButtonGroupBy>
+            ) : (
               <ButtonWithOutStyle
                 onClick={() => props.history.push('/gameboard')}
               >
-                <LabelWithIcon label="Create a game" />
+                <LabelWithIcon label="Start game" />
               </ButtonWithOutStyle>
-              <ButtonWithOutStyle
-                onClick={() => props.history.push('/gameboard')}
-              >
-                <LabelWithIcon label="Join a game" />
+            )}
+          </Col>
+          {/* <Col xs={12}>
+            <ButtonGroupBy>
+              <ButtonWithOutStyle onClick={() => setShowLoginModal(true)}>
+                <LabelWithIcon fontSize="2rem" label="Login" />
+              </ButtonWithOutStyle>
+              <ButtonWithOutStyle onClick={() => setShowRegisterModal(true)}>
+                <LabelWithIcon fontSize="2rem" label="Register" />
               </ButtonWithOutStyle>
             </ButtonGroupBy>
-          ) : (
-            <ButtonWithOutStyle
-              onClick={() => props.history.push('/gameboard')}
-            >
-              <LabelWithIcon label="Start game" />
-            </ButtonWithOutStyle>
-          )}
-        </Col>
-        <Col xs={12}>
-          <ButtonGroupBy>
-            <ButtonWithOutStyle onClick={() => setShowLoginModal(true)}>
-              <LabelWithIcon fontSize="2rem" label="Login" />
-            </ButtonWithOutStyle>
-            <ButtonWithOutStyle onClick={() => setShowRegisterModal(true)}>
-              <LabelWithIcon fontSize="2rem" label="Register" />
-            </ButtonWithOutStyle>
-          </ButtonGroupBy>
-        </Col>
+          </Col> */}  
       </HomePageRow>
     </GridStyle>
   );

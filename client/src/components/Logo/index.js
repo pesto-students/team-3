@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const H1 = styled.h1`
   font-family: var(--ff-logo);
-  font-size: ${({ fontSize }) => fontSize || "5.0625rem"};
+  font-size: ${({ fontSize }) => fontSize || "3.0625rem"};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;

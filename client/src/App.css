@@ -6,7 +6,7 @@
 .App {
   text-align: center;
   min-height: 100vh;
-  background: black;
+  background: #fff;
 }
 
 .App-logo {
@@ -74,4 +74,45 @@ li {
   /* background: url(./assets/food1.png) center center no-repeat; */
   border: 1px solid #fff;
   z-index: 1;
+}
+.row{
+  margin: 0px !important;
+}
+.gameHeader{
+  width: 100%;
+  display: block;
+  text-align: left;
+  position: relative;
+  height: 64px;
+  background-color: #4dba6e;
+}
+
+.gameHeader h1{
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 1px;
+}
+
+.container-fluid{
+  padding: 0px !important;
+}
+.loginregisterHeader{
+  position: absolute;
+  right: 25px;
+  top: 13px;
+}
+.loginregisterHeader button.headerCommonButton{
+  background-color: transparent;
+  border: #fff solid 1px;
+  border-radius: 4px;
+  margin: 0 8px;
+  padding: 0.5rem 1.5rem;
+  color: #fff;
+}
+.loginregisterHeader button.headerCommonButton h2{
+  color: #fff;
+  font-family: 'Major Mono Display', monospace !important;
+  text-transform: capitalize;
 }

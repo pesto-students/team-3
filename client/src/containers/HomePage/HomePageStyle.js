@@ -8,7 +8,7 @@ export const GridStyle = styled(Grid)`
   flex: 1 1 auto;
   display: flex;
   flex-flow: column;
-  max-width: 60%;
+  max-width: 100%;
 
   width: 100%;
   margin: 0 auto;
@@ -18,5 +18,5 @@ export const GridStyle = styled(Grid)`
 `;
 
 export const LogoStyle = styled(Logo)`
-  margin-top: 10%;
+  margin-top: 0%;
 `;
