@@ -45,7 +45,8 @@ const HomePage = (props) => {
             </ButtonWithOutStyle>
           </div>
         </header>
-        <Col xs={12}>
+        <div className="homepageSection">
+          <Col xs={12}>
             <Radio
               options={Options}
               selectedOption={gameType}
@@ -59,36 +60,27 @@ const HomePage = (props) => {
           )}
           <Col xs={12}>
             {gameType === 'multiple' ? (
-              <ButtonGroupBy>
-                <ButtonWithOutStyle
+              <ButtonGroupBy className="buttonGroup">
+                <ButtonWithOutStyle  className="gameStartBtn"
                   onClick={() => props.history.push('/gameboard')}
                 >
                   <LabelWithIcon label="Create a game" />
                 </ButtonWithOutStyle>
-                <ButtonWithOutStyle
+                <ButtonWithOutStyle className="gameStartBtn"
                   onClick={() => props.history.push('/gameboard')}
                 >
                   <LabelWithIcon label="Join a game" />
                 </ButtonWithOutStyle>
               </ButtonGroupBy>
             ) : (
-              <ButtonWithOutStyle
+              <ButtonWithOutStyle className="gameStartBtn"
                 onClick={() => props.history.push('/gameboard')}
               >
                 <LabelWithIcon label="Start game" />
               </ButtonWithOutStyle>
             )}
-          </Col>
-          {/* <Col xs={12}>
-            <ButtonGroupBy>
-              <ButtonWithOutStyle onClick={() => setShowLoginModal(true)}>
-                <LabelWithIcon fontSize="2rem" label="Login" />
-              </ButtonWithOutStyle>
-              <ButtonWithOutStyle onClick={() => setShowRegisterModal(true)}>
-                <LabelWithIcon fontSize="2rem" label="Register" />
-              </ButtonWithOutStyle>
-            </ButtonGroupBy>
-          </Col> */}  
+          </Col>  
+        </div>            
       </HomePageRow>
     </GridStyle>
   );

@@ -6,7 +6,11 @@
 .App {
   text-align: center;
   min-height: 100vh;
-  background: #fff;
+  /* background: url('./assets/grass.png') left bottom repeat-x; */
+  border-image: url(./assets/stone.png) 20 round;
+  border-image-repeat: repeat;
+  background: url(./assets/grass.png) left top no-repeat;
+  background-size: cover;
 }
 
 .App-logo {
@@ -48,11 +52,11 @@ li {
   position: relative;
   margin: 0px auto;
   width: 100%;
-  height: 89vh;
+  height: 91vh;
   border: 20px solid transparent;
   border-image: url(./assets/stone.png) 20 round;
   border-image-repeat: repeat;
-  background: url(./assets/gamearea.png) left top no-repeat;
+  background: url(./assets/grass.png) left top no-repeat;
   background-size: cover;
   padding: 30px;
 }
@@ -103,16 +107,85 @@ li {
   right: 25px;
   top: 13px;
 }
-.loginregisterHeader button.headerCommonButton{
+button.headerCommonButton{
   background-color: transparent;
   border: #fff solid 1px;
   border-radius: 4px;
   margin: 0 8px;
   padding: 0.5rem 1.5rem;
   color: #fff;
+  transition: all ease-in-out 0.3s;
 }
-.loginregisterHeader button.headerCommonButton h2{
+
+button.headerCommonButton:hover{
+  background-color: #28994a;
+  border: #28994a solid 1px;
   color: #fff;
-  font-family: 'Major Mono Display', monospace !important;
+}
+
+button.headerCommonButton h2{
+  color: #fff;
   text-transform: capitalize;
+}
+
+button.gameStartBtn{
+  background-color: #28994a;
+  border: #28994a solid 1px;
+  border-radius: 4px;
+  margin: 20px 8px 0px 8px;
+  padding: 0.5rem 1.5rem;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+}
+button.gameStartBtn:hover{
+  background-color: #119539;
+  border: #119539 solid 1px;
+  color: #fff;
+}
+
+button.gameStartBtn h2{
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.buttonGroup{
+  text-align: center;
+  margin: 0 auto;
+  width: 60%;
+  display: block !important;
+}
+.buttonGroup button{
+  max-width: 13rem;
+}
+.homepageSection{
+  width: 50%;
+  margin: 50px auto;
+  background-color: #edfff4;
+  padding: 25px 0 25px 0;
+  box-shadow: #e6e6e6 0 5px 10px;
+  border-radius: 10px;
+}
+
+@media(max-width:768px) {
+  .gameHeader h1 {
+    position: absolute;
+    left: 15px;
+    right: auto;
+    text-align: center;
+    top: 9px;
+  }
+  .loginregisterHeader {
+    position: absolute;
+    right: 15px;
+    top: 16px;
+  }
+  .homepageSection{
+    width: 90%;
+  }
+  .buttonGroup{
+    width: 100%;
+  }
+  button.gameStartBtn h2{
+    font-size: 1rem !important;
+  }
 }

@@ -6,14 +6,14 @@ const Switch = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  border: 3px solid var(--clr-primary);
+  border: 1px solid var(--clr-primary);
   color: var(--clr-primary);
   font-size: 1.2;
   font-family: var(--ff-primary);
   border-radius: 10px;
   @media ${mediaSize.tablet} {
-    font-size: 1.5625rem;
-    width: 61%;
+    font-size: 1.2rem;
+    width: 100%;
   }
 `;
 const Quality = styled.div`

@@ -132,7 +132,7 @@ class GameBoard extends Component {
   }
 
   onGameOver() {
-    alert(`Game Over. Score is ${this.state.snakeDots.length}`);
+    console.log(`Game Over. Score is ${this.state.snakeDots.length}`);
     this.setState(initialState);
   }
   render() {

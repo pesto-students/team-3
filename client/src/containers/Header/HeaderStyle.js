@@ -4,6 +4,7 @@ import { Row } from 'react-flexbox-grid';
 export const HeaderRow = styled(Row)`
   padding: 10px 40px;
   justify-content: space-between;
+  background-color: #4dba6e;
   @media (max-width: 500px) {
     flex-direction: column-reverse;
     div {
