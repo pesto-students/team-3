@@ -2,9 +2,9 @@ import styled from 'styled-components';
 // import mediaSize from '../../constants/MediaSize';
 
 const Input = styled.input`
-  margin: 10px auto;
+  margin: 20px auto 0 auto;
   min-height: 1.5rem;
-  width: 85%;
+  width: 100%;
   font-family: var(--ff-primary);
   font-size: 1.1875rem;
   padding: 12px 12px;

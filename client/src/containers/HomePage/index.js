@@ -46,6 +46,8 @@ const HomePage = (props) => {
           </div>
         </header>
         <div className="homepageSection">
+          
+
           <Col xs={12}>
             <Radio
               options={Options}
@@ -80,7 +82,8 @@ const HomePage = (props) => {
               </ButtonWithOutStyle>
             )}
           </Col>  
-        </div>            
+        </div>
+                    
       </HomePageRow>
     </GridStyle>
   );

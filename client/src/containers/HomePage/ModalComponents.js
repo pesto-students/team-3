@@ -18,10 +18,8 @@ const Input = styled.input`
   -moz-appearance: none;
   appearance: none;
   box-sizing: border-box;
-
   border: none;
   border-bottom: 0.5px solid;
-
   font-size: 1.25rem;
   padding-top: 0.25rem;
   margin-bottom: 1.25rem;

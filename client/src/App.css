@@ -7,9 +7,10 @@
   text-align: center;
   min-height: 100vh;
   /* background: url('./assets/grass.png') left bottom repeat-x; */
-  border-image: url(./assets/stone.png) 20 round;
-  border-image-repeat: repeat;
-  background: url(./assets/grass.png) left top no-repeat;
+  /* url: https://images.pexels.com/photos/1420008/pexels-photo-1420008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
+    url2: https://images.unsplash.com/photo-1488330890490-c291ecf62571?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80
+  */
+  background: url(./assets/homepage2.png) left top no-repeat;
   background-size: cover;
 }
 
@@ -151,14 +152,14 @@ button.gameStartBtn h2{
 .buttonGroup{
   text-align: center;
   margin: 0 auto;
-  width: 60%;
+  width: 100%;
   display: block !important;
 }
 .buttonGroup button{
   max-width: 13rem;
 }
 .homepageSection{
-  width: 50%;
+  width: 30%;
   margin: 50px auto;
   background-color: #edfff4;
   padding: 25px 0 25px 0;
