@@ -49,41 +49,10 @@ li {
   color: #fff;
 }
 
-.game-area {
-  position: relative;
-  margin: 0px auto;
-  width: 100%;
-  height: 91vh;
-  border: 20px solid transparent;
-  border-image: url(./assets/stone.png) 20 round;
-  border-image-repeat: repeat;
-  background: url(./assets/grass.png) left top no-repeat;
-  background-size: cover;
-  padding: 30px;
-}
-
-.snake-dot {
-  position: absolute;
-  width: 2%;
-  height: 2%;
-  background-color: #000;
-  border: 1px solid #fff;
-  z-index: 2;
-}
-
-.snake-food {
-  position: absolute;
-  width: 2%;
-  height: 2%;
-  background: red;
-  /* background: url(./assets/food1.png) center center no-repeat; */
-  border: 1px solid #fff;
-  z-index: 1;
-}
-.row{
+.row {
   margin: 0px !important;
 }
-.gameHeader{
+.gameHeader {
   width: 100%;
   display: block;
   text-align: left;
@@ -92,7 +61,7 @@ li {
   background-color: #4dba6e;
 }
 
-.gameHeader h1{
+.gameHeader h1 {
   position: absolute;
   left: 0;
   right: 0;
@@ -100,15 +69,12 @@ li {
   top: 1px;
 }
 
-.container-fluid{
-  padding: 0px !important;
-}
-.loginregisterHeader{
+.loginregisterHeader {
   position: absolute;
   right: 25px;
   top: 13px;
 }
-button.headerCommonButton{
+button.headerCommonButton {
   background-color: transparent;
   border: #fff solid 1px;
   border-radius: 4px;
@@ -118,18 +84,18 @@ button.headerCommonButton{
   transition: all ease-in-out 0.3s;
 }
 
-button.headerCommonButton:hover{
+button.headerCommonButton:hover {
   background-color: #28994a;
   border: #28994a solid 1px;
   color: #fff;
 }
 
-button.headerCommonButton h2{
+button.headerCommonButton h2 {
   color: #fff;
   text-transform: capitalize;
 }
 
-button.gameStartBtn{
+button.gameStartBtn {
   background-color: #28994a;
   border: #28994a solid 1px;
   border-radius: 4px;
@@ -138,27 +104,27 @@ button.gameStartBtn{
   color: #fff;
   transition: all ease-in-out 0.3s;
 }
-button.gameStartBtn:hover{
+button.gameStartBtn:hover {
   background-color: #119539;
   border: #119539 solid 1px;
   color: #fff;
 }
 
-button.gameStartBtn h2{
+button.gameStartBtn h2 {
   color: #fff;
   text-transform: capitalize;
   font-size: 20px;
 }
-.buttonGroup{
+.buttonGroup {
   text-align: center;
   margin: 0 auto;
   width: 100%;
   display: block !important;
 }
-.buttonGroup button{
+.buttonGroup button {
   max-width: 13rem;
 }
-.homepageSection{
+.homepageSection {
   width: 30%;
   margin: 50px auto;
   background-color: #edfff4;
@@ -167,7 +133,7 @@ button.gameStartBtn h2{
   border-radius: 10px;
 }
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
   .gameHeader h1 {
     position: absolute;
     left: 15px;
@@ -180,13 +146,13 @@ button.gameStartBtn h2{
     right: 15px;
     top: 16px;
   }
-  .homepageSection{
+  .homepageSection {
     width: 90%;
   }
-  .buttonGroup{
+  .buttonGroup {
     width: 100%;
   }
-  button.gameStartBtn h2{
+  button.gameStartBtn h2 {
     font-size: 1rem !important;
   }
 }

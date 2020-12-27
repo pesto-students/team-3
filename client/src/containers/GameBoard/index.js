@@ -1,93 +1,171 @@
 import React, { Component } from 'react';
 import Header from '../Header/';
-import Snake from "./Snake";
-import Food from "./Food";
-import { Grid, Row } from 'react-flexbox-grid';
-import styled from 'styled-components';
+import Snake from '../../components/Snake/';
+import Food from '../../components/Food';
+import {
+  GridStyled,
+  OverLapWrapper,
+  OverLapWrapperBg,
+  OverLapWrapperBox,
+  GameArea,
+  GameBoardRow,
+} from './GameBoardStyle';
 
-const GridStyled = styled(Grid)`
-  padding: 0px;
-`;
-
-const getRandomCoordinates = () => {
+const getRandomCoordinates = (border) => {
   let min = 1;
-  let max = 98;
-  let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
-  let y = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
+  let x =
+    Math.floor(
+      (Math.random() * ((border && border.width - 50) || 1) + min) / 2,
+    ) * 2;
+  let y =
+    Math.floor(
+      (Math.random() * ((border && border.height - 50) || 1) + min) / 2,
+    ) * 2;
   return [x, y];
 };
 
-const initialState = {
-  food: getRandomCoordinates(),
-  speed: 200,
-  direction: "RIGHT",
-  snakeDots: [
-    [0, 0],
-    [2, 0],
-  ],
-};
-
-
 class GameBoard extends Component {
-  state = initialState;
-
-  componentDidMount() {
-    setInterval(this.moveSnake, this.state.speed);
-    document.onkeydown = this.onKeyDown;
+  constructor(props) {
+    super(props);
+    this.state = {
+      playPause: false,
+      food: [],
+      speed: 200,
+      direction: 'RIGHT',
+      overLap: true,
+      snakeDots: [
+        [0, 0],
+        [2, 0],
+      ],
+      timer: 3,
+      border: {
+        width: null,
+        height: null,
+      },
+    };
+    this.myRef = React.createRef();
   }
 
+  componentDidMount() {
+    document.onkeydown = this.onKeyDown;
+    document.onkeyup = this.onKeyUp;
+    this.setState({
+      border: {
+        height: this.myRef.current.clientHeight,
+        width: this.myRef.current.clientWidth,
+      },
+      food: getRandomCoordinates({
+        height: this.myRef.current.clientHeight,
+        width: this.myRef.current.clientWidth,
+      }),
+    });
+    this.startGameTimer = setInterval(
+      () => this.setState(({ timer }) => ({ timer: timer - 1 })),
+      1000,
+    );
+    setTimeout(() => {
+      clearInterval(this.startGameTimer);
+      this.setState(() => ({
+        overLap: false,
+      }));
+      this.startGame();
+    }, 3000);
+  }
+  playPauseGame = () => {
+    const { playPause } = this.state;
+    if (playPause) {
+      this.setState({ playPause: !playPause }, () => {
+        this.startGame();
+      });
+    } else {
+      this.setState({ playPause: !playPause }, () => {
+        this.pauseGame();
+      });
+    }
+  };
+  startGame = () => {
+    this.timeInterval = setInterval(this.moveSnake, this.state.speed);
+  };
+  pauseGame = () => {
+    clearInterval(this.timeInterval);
+  };
   componentDidUpdate() {
     this.checkIfOutOfBorders();
     this.checkIfCollapsed();
     this.checkIfEat();
   }
+  onKeyUp = (e) => {
+    e = e || window.event;
+    if (e.keyCode === 32) {
+      //your code
+      this.playPauseGame();
+    }
+  };
 
   onKeyDown = (e) => {
     e = e || window.event;
-    switch (e.keyCode) {
-      case 38:
-        this.setState({ direction: "UP" });
-        break;
-      case 40:
-        this.setState({ direction: "DOWN" });
-        break;
-      case 37:
-        this.setState({ direction: "LEFT" });
-        break;
-      case 39:
-        this.setState({ direction: "RIGHT" });
-        break;
+    if (!this.state.playPause) {
+      switch (e.keyCode) {
+        case 38:
+          if (this.state.direction !== 'DOWN') {
+            this.setState(() => ({ direction: 'UP' }));
+          }
+          break;
+        case 40:
+          if (this.state.direction !== 'UP') {
+            this.setState(() => ({ direction: 'DOWN' }));
+          }
+          break;
+        case 37:
+          if (this.state.direction !== 'RIGHT') {
+            this.setState(() => ({ direction: 'LEFT' }));
+          }
+          break;
+        case 39:
+          if (this.state.direction !== 'LEFT') {
+            this.setState(() => ({ direction: 'RIGHT' }));
+          }
+          break;
+        default:
+          return;
+      }
     }
   };
 
   moveSnake = () => {
-    let dots = [...this.state.snakeDots];
-    let head = dots[dots.length - 1];
-
-    switch (this.state.direction) {
-      case "RIGHT":
-        head = [head[0] + 2, head[1]];
-        break;
-      case "LEFT":
-        head = [head[0] - 2, head[1]];
-        break;
-      case "DOWN":
-        head = [head[0], head[1] + 2];
-        break;
-      case "UP":
-        head = [head[0], head[1] - 2];
-        break;
+    if (!this.state.playPause) {
+      let dots = [...this.state.snakeDots];
+      let head = dots[dots.length - 1];
+      switch (this.state.direction) {
+        case 'RIGHT':
+          head = [head[0] + 22, head[1]];
+          break;
+        case 'LEFT':
+          head = [head[0] - 22, head[1]];
+          break;
+        case 'DOWN':
+          head = [head[0], head[1] + 22];
+          break;
+        case 'UP':
+          head = [head[0], head[1] - 22];
+          break;
+        default:
+          return;
+      }
+      dots.push(head);
+      dots.shift();
+      this.setState({
+        snakeDots: dots,
+      });
     }
-    dots.push(head);
-    dots.shift();
-    this.setState({
-      snakeDots: dots,
-    });
   };
 
   checkIfOutOfBorders() {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
-    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
+    const {
+      border: { width, height },
+    } = this.state;
+    if (head[0] >= width || head[1] >= height || head[0] < 0 || head[1] < 0) {
       this.onGameOver();
     }
   }
@@ -106,45 +184,75 @@ class GameBoard extends Component {
   checkIfEat() {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
     let food = this.state.food;
-    if (head[0] === food[0] && head[1] === food[1]) {
-      this.setState({
-        food: getRandomCoordinates(),
-      });
+    if (Math.abs(head[0] - food[0]) < 13 && Math.abs(head[1] - food[1]) < 13) {
+      this.setState(() => ({
+        food: getRandomCoordinates(this.state.border),
+      }));
       this.enlargeSnake();
       this.increaseSpeed();
     }
   }
 
   enlargeSnake() {
-    let newSnake = [...this.state.snakeDots];
-    newSnake.unshift([]);
+    let { snakeDots } = this.state;
+    snakeDots.unshift(snakeDots[0]);
     this.setState({
-      snakeDots: newSnake,
+      snakeDots,
     });
   }
 
   increaseSpeed() {
-    if (this.state.speed > 10) {
-      this.setState({
-        speed: this.state.speed - 10,
-      });
+    if (this.state.speed > 50) {
+      this.setState(
+        {
+          speed: this.state.speed - 10,
+        },
+        () => {
+          this.pauseGame();
+          this.startGame();
+        },
+      );
     }
   }
 
   onGameOver() {
-    console.log(`Game Over. Score is ${this.state.snakeDots.length}`);
-    this.setState(initialState);
+    this.pauseGame();
+    alert(`Game Over. Score is ${this.state.snakeDots.length - 2}`);
+    this.setState(() => ({
+      snakeDots: [
+        [0, 0],
+        [22, 0],
+      ],
+      direction: 'RIGHT',
+      speed: 200,
+    }));
+    this.startGame();
   }
   render() {
+    const { overLap, snakeDots, food, timer, direction } = this.state;
+    const childrenWrapper = () => (
+      <OverLapWrapperBox>
+        <h1>{timer}</h1>
+      </OverLapWrapperBox>
+    );
     return (
       <GridStyled fluid>
-        <Header />
-        <Row>
-          <div className="game-area">
-            <Snake snakeDots={this.state.snakeDots} />
-            <Food dot={this.state.food} />
-          </div>
-        </Row>
+        <Header
+          playPauseChange={this.playPauseGame}
+          score={snakeDots.length - 2}
+        />
+        <GameBoardRow>
+          {overLap && (
+            <OverLapWrapper>
+              {childrenWrapper()}
+              <OverLapWrapperBg />
+            </OverLapWrapper>
+          )}
+          <GameArea ref={this.myRef}>
+            <Snake snakeDots={snakeDots} direction={direction} />
+            <Food dot={food} />
+          </GameArea>
+        </GameBoardRow>
       </GridStyled>
     );
   }

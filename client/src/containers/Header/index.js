@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Col } from "react-flexbox-grid";
-import { HeaderRow, Span } from "./HeaderStyle";
-import Logo from "../../components/Logo";
-import Text from "../../components/Text";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { ButtonWithOutStyle } from "../../components/Button";
+import React, { useState } from 'react';
+import { Col } from 'react-flexbox-grid';
+import { HeaderRow, Span } from './HeaderStyle';
+import Logo from '../../components/Logo';
+import Text from '../../components/Text';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { ButtonWithOutStyle } from '../../components/Button';
 
-export default function Header() {
+export default function Header({ playPauseChange, score }) {
   const [playPause, setPlayPause] = useState(false);
   return (
     <HeaderRow middle="xs">
@@ -16,14 +16,19 @@ export default function Header() {
           Username: <span className="username">Name</span>
         </Text>
         <Text>
-          Current Score: <span className="username">120</span>
+          Current Score: <span className="username">{score || 0}</span>
         </Text>
       </Col>
       <Col>
-        <Logo fontSize={"2.5rem"} />
+        <Logo fontSize={'2.5rem'} />
       </Col>
       <Col>
-        <ButtonWithOutStyle onClick={() => setPlayPause(!playPause)}>
+        <ButtonWithOutStyle
+          onClick={() => {
+            setPlayPause(!playPause);
+            playPauseChange();
+          }}
+        >
           <Span className="fa-layers fa-fw">
             <FontAwesomeIcon icon={faCircle} color="green" />
             <FontAwesomeIcon

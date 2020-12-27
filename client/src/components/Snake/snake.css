@@ -1,0 +1,29 @@
+.up-tail-border {
+  border-radius: 0 0 50% 50%;
+}
+
+.down-tail-border {
+  border-radius: 50% 50% 0 0;
+}
+.left-tail-border {
+  border-radius: 0 50% 50% 0;
+}
+
+.right-tail-border {
+  border-radius: 50% 0 0 50%;
+}
+
+.up-left-border {
+  border-radius: 50% 0 0 0;
+}
+
+.up-right-border {
+  border-radius: 0 50% 0 0;
+}
+.down-right-border {
+  border-radius: 0 0 50% 0;
+}
+
+.down-left-border {
+  border-radius: 0 0 0 50%;
+}
