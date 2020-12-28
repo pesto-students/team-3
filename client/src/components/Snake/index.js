@@ -6,8 +6,8 @@ const SnakeDots = styled.div`
   position: absolute;
   width: 22px;
   height: 22px;
-  background-color: #000;
-  // border: 1px solid #fff;
+  background-color: green;
+  border: 1px solid #add08c;
   z-index: 2;
   left: ${({ left }) => left + 'px'};
   top: ${({ top }) => top + 'px'};
@@ -15,7 +15,6 @@ const SnakeDots = styled.div`
   ${({ head }) =>
     head &&
     `
-    background-color: #902828 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,18 +82,25 @@ const tailRadius = (tailDot, nextDot) => {
     ? 'left-tail-border'
     : 'right-tail-border';
 };
+const isAngleForming = (presentDot, nextDot, prevDot) => {
+  return (
+    (presentDot[0] === nextDot[0] && presentDot[0] === prevDot[0]) ||
+    (presentDot[1] === nextDot[1] && presentDot[1] === prevDot[1])
+  );
+};
 const bodyRadius = (presentDot, nextDot, prevDot) => {
-  console.log(presentDot, nextDot, prevDot);
-  if (presentDot.length > 0 && nextDot.length > 0) {
-    return presentDot[0] === nextDot[0] && presentDot[0] === prevDot[0]
-      ? ''
-      : presentDot[1] === nextDot[1] && presentDot[1] === prevDot[1]
-      ? ''
-      : (presentDot[0] === nextDot[0] && nextDot[1] < prevDot[1]) ||
-        (presentDot[1] === nextDot[1] && nextDot[0] < prevDot[0])
-      ? 'up-right-border'
-      : '';
+  if (isAngleForming(presentDot, nextDot, prevDot)) {
+    return '';
+  } else if (presentDot[0] === nextDot[0] && presentDot[1] > nextDot[1]) {
+    return prevDot[0] > nextDot[0] ? 'down-left-border' : 'down-right-border';
+  } else if (presentDot[0] === nextDot[0] && presentDot[1] < nextDot[1]) {
+    return prevDot[0] > nextDot[0] ? 'up-left-border' : 'up-right-border';
+  } else if (presentDot[1] === nextDot[1] && presentDot[0] < nextDot[0]) {
+    return prevDot[1] > nextDot[1] ? 'up-left-border' : 'down-left-border';
+  } else if (presentDot[1] === nextDot[1] && presentDot[0] > nextDot[0]) {
+    return prevDot[1] > nextDot[1] ? 'up-right-border' : 'down-right-border';
   }
+  return '';
 };
 const Snake = ({ snakeDots, direction }) => {
   return (
@@ -112,7 +118,7 @@ const Snake = ({ snakeDots, direction }) => {
               ? tailRadius(dot, snakeDots[1])
               : i === snakeDots.length - 1
               ? ''
-              : '' //bodyRadius(dot, snakeDots[i + 1], snakeDots[i - 1])
+              : bodyRadius(dot, snakeDots[i + 1], snakeDots[i - 1], direction)
           }
         >
           {i === snakeDots.length - 1 && (

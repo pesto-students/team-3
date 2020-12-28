@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import food from '../assets/food1.png';
 const SnakeFood = styled.div`
   position: absolute;
   width: 22px;
   height: 22px;
-  background: red;
-  border: 1px solid #fff;
+  background-image: url(${food});
+  background-size: cover;
+  background-repeat: no-repeat;
   z-index: 3;
   left: ${({ left }) => left + 'px'};
   top: ${({ top }) => top + 'px'};
