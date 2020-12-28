@@ -7,7 +7,7 @@ import { ButtonWithOutStyle, ButtonGroupBy } from '../../components/Button';
 import Modal from '../../components/Modal';
 import { Login, Register } from './ModalComponents';
 import Radio from '../../components/Radio';
-import SnakeImage from '../../assets/snakenew.png';
+import SnakeImage from '../../assets/snakenew1.png';
 
 const Options = [
   { label: 'Single Player', value: 'single' },

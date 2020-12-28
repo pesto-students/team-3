@@ -54,7 +54,7 @@ li {
   text-align: left;
   position: relative;
   height: 64px;
-  background-color: #4dba6e;
+  background-color: transparent;
 }
 
 .gameHeader h1 {
@@ -74,7 +74,7 @@ button.headerCommonButton {
   background-color: transparent;
   border: #fff solid 1px;
   border-radius: 4px;
-  margin: 0 8px;
+  margin: 30px 8px 0 8px;
   padding: 0.5rem 1.5rem;
   color: #fff;
   transition: all ease-in-out 0.3s;
@@ -122,10 +122,10 @@ button.gameStartBtn h2 {
 }
 .homepageSection {
   width: 30%;
-  margin: 50px auto;
-  background-color: #f4ffdf;
+  margin: 20px auto;
+  background-color: transparent;
   padding: 25px 0 25px 0;
-  box-shadow: #e6e6e6 0 5px 10px;
+  /* box-shadow: #e6e6e6 0 5px 10px; */
   border-radius: 10px;
 }
 
@@ -133,6 +133,11 @@ button.gameStartBtn h2 {
   max-width: 350px;
   margin-bottom: 20px;
 }
+
+.snake-image:hover{
+  content: url('./assets/snakenew2.png');
+}
+
 
 @media (max-width: 768px) {
   .gameHeader h1 {
