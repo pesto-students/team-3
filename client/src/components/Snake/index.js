@@ -7,7 +7,8 @@ const SnakeDots = styled.div`
   width: 22px;
   height: 22px;
   background-color: green;
-  border: 1px solid #add08c;
+  // border: 1px solid #add08c;
+  border: none;
   z-index: 2;
   left: ${({ left }) => left + 'px'};
   top: ${({ top }) => top + 'px'};
@@ -63,15 +64,15 @@ const SnakeDots = styled.div`
 const Eye = styled.div`
   border-radius: 50%;
   background: #ffffff;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   display: flex;
 `;
 const EyeDot = styled.div`
   border-radius: 50%;
   background: #000000;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 `;
 const tailRadius = (tailDot, nextDot) => {
   return tailDot[0] === nextDot[0]
