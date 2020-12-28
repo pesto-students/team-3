@@ -9,6 +9,7 @@ export const GridStyle = styled(Grid)`
   display: flex;
   flex-flow: column;
   max-width: 100%;
+  padding: 0px;
 
   width: 100%;
   margin: 0 auto;
