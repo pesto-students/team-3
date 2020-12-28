@@ -123,10 +123,15 @@ button.gameStartBtn h2 {
 .homepageSection {
   width: 30%;
   margin: 50px auto;
-  background-color: #edfff4;
+  background-color: #f4ffdf;
   padding: 25px 0 25px 0;
   box-shadow: #e6e6e6 0 5px 10px;
   border-radius: 10px;
+}
+
+.snake-image{
+  max-width: 350px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {

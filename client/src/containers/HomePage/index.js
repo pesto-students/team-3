@@ -7,6 +7,8 @@ import { ButtonWithOutStyle, ButtonGroupBy } from '../../components/Button';
 import Modal from '../../components/Modal';
 import { Login, Register } from './ModalComponents';
 import Radio from '../../components/Radio';
+import SnakeImage from '../../assets/snakenew.png';
+
 const Options = [
   { label: 'Single Player', value: 'single' },
   { label: 'Multiple Player', value: 'multiple' },
@@ -45,9 +47,10 @@ const HomePage = (props) => {
             </ButtonWithOutStyle>
           </div>
         </header>
-        <div className="homepageSection">
-          
 
+
+        <div className="homepageSection">         
+          <img src={SnakeImage} alt="Snake Image" className="snake-image"/>
           <Col xs={12}>
             <Radio
               options={Options}
