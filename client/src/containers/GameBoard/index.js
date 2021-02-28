@@ -24,13 +24,37 @@ const getRandomCoordinates = (border) => {
   return [x, y];
 };
 
+const requestInterval = function (fn, delay) {
+  let requestAnimFrame = (function () {
+      return (
+        window.requestAnimationFrame ||
+        function (callback, element) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })(),
+    start = new Date().getTime(),
+    handle = {};
+  function loop() {
+    handle.value = requestAnimFrame(loop);
+    const current = new Date().getTime(),
+      delta = current - start;
+    if (delta >= delay) {
+      console.log('delay', delay, start, current, new Date());
+      fn.call();
+      start = new Date().getTime();
+    }
+  }
+  handle.value = requestAnimFrame(loop);
+  return handle;
+};
 class GameBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       playPause: false,
       food: [],
-      speed: 200,
+      speed: 150,
       direction: 'RIGHT',
       overLap: true,
       snakeDots: [
@@ -48,7 +72,6 @@ class GameBoard extends Component {
 
   componentDidMount() {
     document.onkeydown = this.onKeyDown;
-    document.onkeyup = this.onKeyUp;
     this.setState({
       border: {
         height: this.myRef.current.clientHeight,
@@ -84,10 +107,11 @@ class GameBoard extends Component {
     }
   };
   startGame = () => {
-    this.timeInterval = setInterval(this.moveSnake, this.state.speed);
+    this.timeInterval = requestInterval(this.moveSnake, this.state.speed);
+    console.log(this.timeInterval);
   };
   pauseGame = () => {
-    clearInterval(this.timeInterval);
+    cancelAnimationFrame(this.timeInterval.value);
   };
   componentDidUpdate() {
     this.checkIfOutOfBorders();
@@ -104,6 +128,7 @@ class GameBoard extends Component {
 
   onKeyDown = (e) => {
     e = e || window.event;
+    this.onKeyUp(e);
     if (!this.state.playPause) {
       switch (e.keyCode) {
         case 38:
@@ -133,6 +158,7 @@ class GameBoard extends Component {
   };
 
   moveSnake = () => {
+    console.log('start game called');
     if (!this.state.playPause) {
       let dots = [...this.state.snakeDots];
       let head = dots[dots.length - 1];
@@ -209,7 +235,7 @@ class GameBoard extends Component {
         },
         () => {
           this.pauseGame();
-          this.startGame();
+          setTimeout(() => this.startGame());
         },
       );
     }
@@ -218,15 +244,19 @@ class GameBoard extends Component {
   onGameOver() {
     this.pauseGame();
     alert(`Game Over. Score is ${this.state.snakeDots.length - 2}`);
-    this.setState(() => ({
-      snakeDots: [
-        [0, 0],
-        [22, 0],
-      ],
-      direction: 'RIGHT',
-      speed: 200,
-    }));
-    this.startGame();
+    this.setState(
+      {
+        snakeDots: [
+          [0, 0],
+          [22, 0],
+        ],
+        direction: 'RIGHT',
+        speed: 200,
+      },
+      () => {
+        this.startGame();
+      },
+    );
   }
   render() {
     const { overLap, snakeDots, food, timer, direction } = this.state;

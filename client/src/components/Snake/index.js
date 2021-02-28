@@ -7,12 +7,10 @@ const SnakeDots = styled.div`
   width: 22px;
   height: 22px;
   background-color: green;
-  // border: 1px solid #add08c;
   border: none;
   z-index: 2;
   left: ${({ left }) => left + 'px'};
   top: ${({ top }) => top + 'px'};
-  // transition: left 0.2s linear, top 0.2s linear;
   ${({ head }) =>
     head &&
     `
@@ -82,6 +80,15 @@ const tailRadius = (tailDot, nextDot) => {
     : tailDot[0] - nextDot[0] > 0
     ? 'left-tail-border'
     : 'right-tail-border';
+};
+const HeadRadius = (headDot, prevDot) => {
+  return headDot[0] === prevDot[0]
+    ? prevDot[1] - headDot[1] > 0
+      ? 'extra-height'
+      : 'extra-height'
+    : prevDot[0] - headDot[0] > 0
+    ? 'extra-width'
+    : 'extra-width';
 };
 const isAngleForming = (presentDot, nextDot, prevDot) => {
   return (

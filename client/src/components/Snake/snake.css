@@ -27,3 +27,11 @@
 .down-left-border {
   border-radius: 0 0 0 50%;
 }
+
+.extra-height {
+  height: 33px !important;
+}
+
+.extra-width {
+  width: 33px !important;
+}
